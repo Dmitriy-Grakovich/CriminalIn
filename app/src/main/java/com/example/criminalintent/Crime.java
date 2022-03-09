@@ -1,5 +1,10 @@
 package com.example.criminalintent;
 
+import android.content.ContentValues;
+
+import com.example.criminalintent.database.CrimeDbSchema;
+import com.example.criminalintent.database.CrimeDbSchema.CrimeTable;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -10,9 +15,14 @@ public class Crime {
     private boolean mSolved;
 
     public Crime() {
-        mId = UUID.randomUUID();
+        this(UUID.randomUUID());
+
+    }
+    public Crime(UUID id) {
+        mId = id;
         mDate = new Date();
     }
+
 
     public UUID getId() {
         return mId;
