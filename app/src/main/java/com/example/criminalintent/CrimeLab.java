@@ -10,6 +10,7 @@ import com.example.criminalintent.database.CrimeCursorWrapper;
 import com.example.criminalintent.database.CrimeDbSchema;
 import com.example.criminalintent.database.CrimeDbSchema.CrimeTable;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -18,6 +19,7 @@ public class CrimeLab {
     private static CrimeLab sCrimeLab;
     private Context mContext;
     private SQLiteDatabase mDatabase;
+
 
     public void addCrime(Crime c) {
         ContentValues values = getContentValues(c);
@@ -96,5 +98,11 @@ public class CrimeLab {
         } finally {
             cursor.close();
         }
+    }
+    public File getPhotoFile(Crime crime) {
+        File filesDir = mContext.getFilesDir();
+        return new File(filesDir, crime.getPhotoFilename());
+        /*if (externalFilesDir == null) {
+        }*/
     }
 }
